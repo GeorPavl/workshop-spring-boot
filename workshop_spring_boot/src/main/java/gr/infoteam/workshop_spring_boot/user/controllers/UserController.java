@@ -1,6 +1,7 @@
 package gr.infoteam.workshop_spring_boot.user.controllers;
 
 import gr.infoteam.workshop_spring_boot.user.User;
+import gr.infoteam.workshop_spring_boot.user.dtos.UserResponseDto;
 import gr.infoteam.workshop_spring_boot.user.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -22,5 +23,14 @@ public class UserController {
         return ResponseEntity
                 .ok()
                 .body(userRepository.findAll());
+    }
+
+    @GetMapping("/get-all-dtos")
+    public ResponseEntity<List<UserResponseDto>> getAllUsersDtos() {
+        return ResponseEntity
+                .ok()
+                .body(userRepository.findAll().stream()
+                        .map(UserResponseDto::new)
+                        .toList());
     }
 }

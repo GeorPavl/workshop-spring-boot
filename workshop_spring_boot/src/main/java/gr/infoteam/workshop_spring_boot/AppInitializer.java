@@ -1,5 +1,8 @@
 package gr.infoteam.workshop_spring_boot;
 
+import gr.infoteam.workshop_spring_boot.features.skill.Skill;
+import gr.infoteam.workshop_spring_boot.features.skill.dtos.SkillRequestDto;
+import gr.infoteam.workshop_spring_boot.features.skill.services.SkillService;
 import gr.infoteam.workshop_spring_boot.features.user.repositories.UserRepository;
 import gr.infoteam.workshop_spring_boot.features.user.enums.Role;
 import gr.infoteam.workshop_spring_boot.features.user.User;
@@ -17,11 +20,15 @@ import org.springframework.context.annotation.Configuration;
 public class AppInitializer implements CommandLineRunner {
 
     private final UserRepository userRepository;
+    private final SkillService skillService;
 
     @Override
     public void run(String... args) throws Exception {
         createUsers();
         printSaveUsers();
+
+        createSkills();
+        printSkills();
     }
 
     private void createUsers() {
@@ -81,5 +88,27 @@ public class AppInitializer implements CommandLineRunner {
 
     private void printSaveUsers() {
         userRepository.findAll().forEach((user -> log.info(user.toString())));
+    }
+
+    private void createSkills() {
+        var angular = SkillRequestDto.builder()
+                .name("Angular")
+                .build();
+
+        var java = SkillRequestDto.builder()
+                .name("Java")
+                .build();
+
+        var jira = SkillRequestDto.builder()
+                .name("Jira")
+                .build();
+
+        skillService.create(angular);
+        skillService.create(java);
+        skillService.create(jira);
+    }
+
+    private void printSkills() {
+        skillService.getAll().forEach(skill -> log.info(skill.toString()));
     }
 }

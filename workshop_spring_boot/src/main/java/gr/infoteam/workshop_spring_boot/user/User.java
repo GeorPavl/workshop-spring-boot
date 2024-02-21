@@ -1,6 +1,7 @@
 package gr.infoteam.workshop_spring_boot.user;
 
 import gr.infoteam.workshop_spring_boot.user.enums.Role;
+import gr.infoteam.workshop_spring_boot.user_info.UserInfo;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -33,7 +34,11 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Enumerated(value = EnumType.STRING)
     @Column(name = "role", nullable = false)
+    @Enumerated(value = EnumType.STRING)
     private Role role;
+
+    @OneToOne( cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_info_id", referencedColumnName = "id", columnDefinition = "uuid")
+    private UserInfo userInfo;
 }

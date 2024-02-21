@@ -1,5 +1,6 @@
 package gr.infoteam.workshop_spring_boot.user_info;
 
+import gr.infoteam.workshop_spring_boot.user.User;
 import gr.infoteam.workshop_spring_boot.user_info.enums.JobRole;
 import gr.infoteam.workshop_spring_boot.user_info.enums.Location;
 import jakarta.persistence.*;
@@ -35,4 +36,17 @@ public class UserInfo {
     @Enumerated(value = EnumType.STRING)
     private JobRole jobRole;
 
+    @OneToOne(mappedBy = "userInfo")
+    private User user;
+
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "id=" + id +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", isAvailable=" + isAvailable +
+                ", location=" + location +
+                ", jobRole=" + jobRole +
+                '}';
+    }
 }

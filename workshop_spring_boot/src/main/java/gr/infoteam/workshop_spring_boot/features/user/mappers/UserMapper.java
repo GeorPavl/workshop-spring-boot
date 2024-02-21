@@ -1,5 +1,6 @@
 package gr.infoteam.workshop_spring_boot.features.user.mappers;
 
+import gr.infoteam.workshop_spring_boot.features.user.dtos.UpdateUserRequestDto;
 import gr.infoteam.workshop_spring_boot.features.user_info.UserInfo;
 import gr.infoteam.workshop_spring_boot.features.user_info.enums.JobRole;
 import gr.infoteam.workshop_spring_boot.features.user_info.enums.Location;
@@ -27,5 +28,15 @@ public class UserMapper {
                 .build();
 
         return entity;
+    }
+
+    public User mapUpdateDtoToExistingEntity(UpdateUserRequestDto requestDto, User existingUser) {
+        existingUser.setRole(Role.valueOf(requestDto.role()));
+        existingUser.getUserInfo().setPhoneNumber(requestDto.phoneNumber());
+        existingUser.getUserInfo().setIsAvailable(requestDto.isAvailable());
+        existingUser.getUserInfo().setLocation(Location.valueOf(requestDto.location()));
+        existingUser.getUserInfo().setJobRole(JobRole.valueOf(requestDto.jobRole()));
+
+        return existingUser;
     }
 }

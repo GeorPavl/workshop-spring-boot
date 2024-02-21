@@ -1,5 +1,6 @@
 package gr.infoteam.workshop_spring_boot.user;
 
+import gr.infoteam.workshop_spring_boot.user.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -32,6 +33,7 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
+    @Enumerated(value = EnumType.STRING)
     @Column(name = "role", nullable = false)
-    Role role;
+    private Role role;
 }

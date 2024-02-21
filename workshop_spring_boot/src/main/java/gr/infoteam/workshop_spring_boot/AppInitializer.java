@@ -1,7 +1,7 @@
 package gr.infoteam.workshop_spring_boot;
 
-import gr.infoteam.workshop_spring_boot.repositories.UserRepository;
-import gr.infoteam.workshop_spring_boot.user.Role;
+import gr.infoteam.workshop_spring_boot.user.repositories.UserRepository;
+import gr.infoteam.workshop_spring_boot.user.enums.Role;
 import gr.infoteam.workshop_spring_boot.user.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

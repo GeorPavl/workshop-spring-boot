@@ -1,4 +1,4 @@
-package gr.infoteam.workshop_spring_boot.repositories;
+package gr.infoteam.workshop_spring_boot.user.repositories;
 
 import gr.infoteam.workshop_spring_boot.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;

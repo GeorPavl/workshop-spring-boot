@@ -3,6 +3,7 @@ package gr.infoteam.workshop_spring_boot.user.controllers;
 import gr.infoteam.workshop_spring_boot.user.dtos.UserRequestDto;
 import gr.infoteam.workshop_spring_boot.user.dtos.UserResponseDto;
 import gr.infoteam.workshop_spring_boot.user.services.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,7 +41,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserResponseDto> createUser(@RequestBody UserRequestDto requestDto) throws NoSuchAlgorithmException {
+    public ResponseEntity<UserResponseDto> createUser(@RequestBody @Valid UserRequestDto requestDto) throws NoSuchAlgorithmException {
         return ResponseEntity
                 .accepted()
                 .body(userService.create(requestDto));

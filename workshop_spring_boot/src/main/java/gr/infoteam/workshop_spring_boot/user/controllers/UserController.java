@@ -1,14 +1,13 @@
 package gr.infoteam.workshop_spring_boot.user.controllers;
 
+import gr.infoteam.workshop_spring_boot.user.dtos.UserRequestDto;
 import gr.infoteam.workshop_spring_boot.user.dtos.UserResponseDto;
 import gr.infoteam.workshop_spring_boot.user.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.UUID;
 
@@ -38,5 +37,12 @@ public class UserController {
         return ResponseEntity
                 .ok()
                 .body(userService.getByEmail(email));
+    }
+
+    @PostMapping
+    public ResponseEntity<UserResponseDto> createUser(@RequestBody UserRequestDto requestDto) throws NoSuchAlgorithmException {
+        return ResponseEntity
+                .accepted()
+                .body(userService.create(requestDto));
     }
 }

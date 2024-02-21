@@ -1,6 +1,6 @@
-package gr.infoteam.workshop_spring_boot.user.services;
+package gr.infoteam.workshop_spring_boot.features.user.services;
 
-import gr.infoteam.workshop_spring_boot.user.User;
+import gr.infoteam.workshop_spring_boot.features.user.User;
 import org.springframework.stereotype.Service;
 
 import java.security.MessageDigest;

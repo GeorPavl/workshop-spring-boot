@@ -1,11 +1,11 @@
-package gr.infoteam.workshop_spring_boot.user.mappers;
+package gr.infoteam.workshop_spring_boot.features.user.mappers;
 
-import gr.infoteam.workshop_spring_boot.user.User;
-import gr.infoteam.workshop_spring_boot.user.dtos.UserRequestDto;
-import gr.infoteam.workshop_spring_boot.user.enums.Role;
-import gr.infoteam.workshop_spring_boot.user_info.UserInfo;
-import gr.infoteam.workshop_spring_boot.user_info.enums.JobRole;
-import gr.infoteam.workshop_spring_boot.user_info.enums.Location;
+import gr.infoteam.workshop_spring_boot.features.user_info.UserInfo;
+import gr.infoteam.workshop_spring_boot.features.user_info.enums.JobRole;
+import gr.infoteam.workshop_spring_boot.features.user_info.enums.Location;
+import gr.infoteam.workshop_spring_boot.features.user.User;
+import gr.infoteam.workshop_spring_boot.features.user.dtos.UserRequestDto;
+import gr.infoteam.workshop_spring_boot.features.user.enums.Role;
 import org.springframework.stereotype.Service;
 
 @Service

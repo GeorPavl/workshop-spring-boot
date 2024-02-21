@@ -1,6 +1,6 @@
-package gr.infoteam.workshop_spring_boot.user.repositories;
+package gr.infoteam.workshop_spring_boot.features.user.repositories;
 
-import gr.infoteam.workshop_spring_boot.user.User;
+import gr.infoteam.workshop_spring_boot.features.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

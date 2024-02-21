@@ -1,19 +1,13 @@
-package gr.infoteam.workshop_spring_boot.user.services;
+package gr.infoteam.workshop_spring_boot.features.user.services;
 
-import gr.infoteam.workshop_spring_boot.user.User;
-import gr.infoteam.workshop_spring_boot.user.dtos.UserRequestDto;
-import gr.infoteam.workshop_spring_boot.user.dtos.UserResponseDto;
-import gr.infoteam.workshop_spring_boot.user.enums.Role;
-import gr.infoteam.workshop_spring_boot.user.mappers.UserMapper;
-import gr.infoteam.workshop_spring_boot.user.repositories.UserRepository;
-import gr.infoteam.workshop_spring_boot.user_info.UserInfo;
-import gr.infoteam.workshop_spring_boot.user_info.enums.JobRole;
-import gr.infoteam.workshop_spring_boot.user_info.enums.Location;
+import gr.infoteam.workshop_spring_boot.features.user.mappers.UserMapper;
+import gr.infoteam.workshop_spring_boot.features.user.dtos.UserRequestDto;
+import gr.infoteam.workshop_spring_boot.features.user.dtos.UserResponseDto;
+import gr.infoteam.workshop_spring_boot.features.user.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.UUID;

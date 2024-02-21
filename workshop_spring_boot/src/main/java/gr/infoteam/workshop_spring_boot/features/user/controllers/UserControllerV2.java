@@ -1,8 +1,8 @@
-package gr.infoteam.workshop_spring_boot.user.controllers;
+package gr.infoteam.workshop_spring_boot.features.user.controllers;
 
-import gr.infoteam.workshop_spring_boot.user.User;
-import gr.infoteam.workshop_spring_boot.user.dtos.UserResponseDto;
-import gr.infoteam.workshop_spring_boot.user.repositories.UserRepository;
+import gr.infoteam.workshop_spring_boot.features.user.User;
+import gr.infoteam.workshop_spring_boot.features.user.dtos.UserResponseDto;
+import gr.infoteam.workshop_spring_boot.features.user.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,7 +1,7 @@
-package gr.infoteam.workshop_spring_boot.user;
+package gr.infoteam.workshop_spring_boot.features.user;
 
-import gr.infoteam.workshop_spring_boot.user.enums.Role;
-import gr.infoteam.workshop_spring_boot.user_info.UserInfo;
+import gr.infoteam.workshop_spring_boot.features.user_info.UserInfo;
+import gr.infoteam.workshop_spring_boot.features.user.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
 

@@ -1,8 +1,8 @@
-package gr.infoteam.workshop_spring_boot.user.controllers;
+package gr.infoteam.workshop_spring_boot.features.user.controllers;
 
-import gr.infoteam.workshop_spring_boot.user.dtos.UserRequestDto;
-import gr.infoteam.workshop_spring_boot.user.dtos.UserResponseDto;
-import gr.infoteam.workshop_spring_boot.user.services.UserService;
+import gr.infoteam.workshop_spring_boot.features.user.dtos.UserRequestDto;
+import gr.infoteam.workshop_spring_boot.features.user.services.UserService;
+import gr.infoteam.workshop_spring_boot.features.user.dtos.UserResponseDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

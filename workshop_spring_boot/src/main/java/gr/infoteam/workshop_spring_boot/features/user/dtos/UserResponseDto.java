@@ -1,6 +1,6 @@
-package gr.infoteam.workshop_spring_boot.user.dtos;
+package gr.infoteam.workshop_spring_boot.features.user.dtos;
 
-import gr.infoteam.workshop_spring_boot.user.User;
+import gr.infoteam.workshop_spring_boot.features.user.User;
 
 import java.util.UUID;
 

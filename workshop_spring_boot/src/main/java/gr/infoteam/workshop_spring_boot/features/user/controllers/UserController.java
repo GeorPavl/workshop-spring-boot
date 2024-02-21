@@ -1,5 +1,6 @@
 package gr.infoteam.workshop_spring_boot.features.user.controllers;
 
+import gr.infoteam.workshop_spring_boot.features.user.dtos.ChangePasswordRequestDto;
 import gr.infoteam.workshop_spring_boot.features.user.dtos.UpdateUserRequestDto;
 import gr.infoteam.workshop_spring_boot.features.user.dtos.UserRequestDto;
 import gr.infoteam.workshop_spring_boot.features.user.services.UserService;
@@ -54,6 +55,13 @@ public class UserController {
         return ResponseEntity
                 .accepted()
                 .body(userService.update(id, requestDto));
+    }
+
+    @PatchMapping
+    public ResponseEntity<String> changeUserPassword(@RequestBody @Valid ChangePasswordRequestDto requestDto) {
+        return ResponseEntity
+                .accepted()
+                .body(userService.changePassword(requestDto));
     }
 
     @DeleteMapping("/{id}")

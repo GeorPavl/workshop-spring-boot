@@ -2,7 +2,7 @@ package gr.infoteam.workshop_spring_boot.utils.exceptions.custom.handlers;
 
 import gr.infoteam.workshop_spring_boot.utils.exceptions.ErrorDetails;
 import gr.infoteam.workshop_spring_boot.utils.exceptions.ErrorResponse;
-import gr.infoteam.workshop_spring_boot.utils.exceptions.custom.implementations.ResourceNotFoundException;
+import gr.infoteam.workshop_spring_boot.utils.exceptions.custom.implementations.ConfirmPasswordNotMatchException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -13,25 +13,25 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 
 @RestControllerAdvice
-public class ResourceNotFoundExceptionHandler {
+public class ConfirmPasswordNotMatchExceptionHandler {
 
-    @ExceptionHandler({ResourceNotFoundException.class})
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ResponseEntity<ErrorResponse> handleResourceNotFoundException(
-            ResourceNotFoundException exception) {
-
+    @ExceptionHandler({ConfirmPasswordNotMatchException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<ErrorResponse> handleConfirmPasswordNotMatchException(
+            ConfirmPasswordNotMatchException exception) {
         var errorResponse = new ErrorResponse(
                 Arrays.asList(
                         new ErrorDetails(
                                 LocalDateTime.now(),
                                 exception.getMessage(),
-                                HttpStatus.NOT_FOUND
+                                HttpStatus.BAD_REQUEST
                         )
                 )
         );
 
+
         return ResponseEntity
-                .status(HttpStatus.NOT_FOUND)
+                .badRequest()
                 .body(errorResponse);
     }
 }

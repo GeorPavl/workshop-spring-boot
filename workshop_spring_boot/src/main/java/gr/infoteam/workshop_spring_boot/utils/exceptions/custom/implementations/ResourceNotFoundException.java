@@ -1,6 +1,4 @@
-package gr.infoteam.workshop_spring_boot.utils.exceptions.custom.impls;
-
-import lombok.AllArgsConstructor;
+package gr.infoteam.workshop_spring_boot.utils.exceptions.custom.implementations;
 
 public class ResourceNotFoundException extends RuntimeException {
     private String resourceName;

@@ -1,6 +1,7 @@
 package gr.infoteam.workshop_spring_boot.features.user.services;
 
 import gr.infoteam.workshop_spring_boot.features.user.User;
+import gr.infoteam.workshop_spring_boot.features.user.dtos.ChangePasswordRequestDto;
 import gr.infoteam.workshop_spring_boot.features.user.dtos.UpdateUserRequestDto;
 import gr.infoteam.workshop_spring_boot.features.user.dtos.UserRequestDto;
 import gr.infoteam.workshop_spring_boot.features.user.dtos.UserResponseDto;
@@ -14,7 +15,9 @@ public interface UserService {
     UserResponseDto getById(UUID id);
     User getEntityById(UUID id);
     UserResponseDto getByEmail(String email);
+    User getEntityByEmail(String email);
     UserResponseDto create(UserRequestDto requestDto) throws NoSuchAlgorithmException;
     UserResponseDto update(UUID id, UpdateUserRequestDto requestDto);
+    String changePassword(ChangePasswordRequestDto changePasswordRequestDto);
     String delete(UUID id);
 }

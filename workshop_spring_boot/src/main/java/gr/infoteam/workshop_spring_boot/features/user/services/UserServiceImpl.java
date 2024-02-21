@@ -1,12 +1,13 @@
 package gr.infoteam.workshop_spring_boot.features.user.services;
 
 import gr.infoteam.workshop_spring_boot.features.user.User;
+import gr.infoteam.workshop_spring_boot.features.user.dtos.ChangePasswordRequestDto;
 import gr.infoteam.workshop_spring_boot.features.user.dtos.UpdateUserRequestDto;
 import gr.infoteam.workshop_spring_boot.features.user.mappers.UserMapper;
 import gr.infoteam.workshop_spring_boot.features.user.dtos.UserRequestDto;
 import gr.infoteam.workshop_spring_boot.features.user.dtos.UserResponseDto;
 import gr.infoteam.workshop_spring_boot.features.user.repositories.UserRepository;
-import gr.infoteam.workshop_spring_boot.utils.exceptions.custom.impls.ResourceNotFoundException;
+import gr.infoteam.workshop_spring_boot.utils.exceptions.custom.implementations.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
     private final PasswordUtilService passwordUtilService;
+    private final UserUtilService userUtilService;
 
     @Override
     public List<UserResponseDto> getAll() {
@@ -46,9 +48,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseDto getByEmail(String email) {
-        var user = userRepository.findByEmail(email)
+        return new UserResponseDto(getEntityByEmail(email));
+    }
+
+    @Override
+    public User getEntityByEmail(String email) {
+        return userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found with email: " + email));
-        return new UserResponseDto(user);
     }
 
     @Override
@@ -66,6 +72,22 @@ public class UserServiceImpl implements UserService {
         var mappedUser = userMapper.mapUpdateDtoToExistingEntity(requestDto, existingUser);
         var savedUser = userRepository.save(mappedUser);
         return new UserResponseDto(savedUser);
+    }
+
+    @Override
+    public String changePassword(ChangePasswordRequestDto changePasswordRequestDto) {
+        var user = getEntityByEmail(changePasswordRequestDto.email());
+        // check if current pass is valid
+        // check if new password equals confirm
+        userUtilService.validCredentialsForChangePassword(changePasswordRequestDto);
+        // set new password
+        user.setPassword(changePasswordRequestDto.newPassword());
+        // encrypt new password
+        passwordUtilService.encryptPassword(user);
+        // save password
+        userRepository.save(user);
+        // return message
+        return "Password updated successfully";
     }
 
     @Override

@@ -1,0 +1,105 @@
+{
+	"info": {
+		"_postman_id": "1f1a1eb4-ff0d-42ad-8638-a3caff18cd18",
+		"name": "Workshop.v.2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8355478",
+		"_collection_link": "https://crimson-moon-939764.postman.co/workspace/Team-Workspace~6509b47d-8a94-42ac-8110-207bb785bbb0/collection/8355478-1f1a1eb4-ff0d-42ad-8638-a3caff18cd18?action=share&source=collection_link&creator=8355478"
+	},
+	"item": [
+		{
+			"name": "Get All With Dtos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/users/get-all-dtos",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"users",
+						"get-all-dtos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All v2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v2/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v2",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/users/267bb0dc-be5b-4cf6-9ea0-bc3b5315574f",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"users",
+						"267bb0dc-be5b-4cf6-9ea0-bc3b5315574f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get by email",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/users/email/mary@mail.com",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"users",
+						"email",
+						"mary@mail.com"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ErrorReponse {
+public class ErrorResponse {
 
     private List<ErrorDetails> errors;
 }

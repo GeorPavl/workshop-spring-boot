@@ -15,7 +15,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler({Exception.class})
     @ResponseStatus(HttpStatus.CONFLICT)
-    public ResponseEntity<ErrorReponse> handleAllExceptions (Exception exception) {
+    public ResponseEntity<ErrorResponse> handleAllExceptions (Exception exception) {
         var errorDetails = new ErrorDetails(
                 LocalDateTime.now(),
                 exception.getMessage(),
@@ -23,12 +23,12 @@ public class GlobalExceptionHandler {
 
         return ResponseEntity
                 .internalServerError()
-                .body(new ErrorReponse(Arrays.asList(errorDetails)));
+                .body(new ErrorResponse(Arrays.asList(errorDetails)));
     }
 
     @ExceptionHandler({MethodArgumentNotValidException.class})
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-    public ResponseEntity<ErrorReponse> handleMethodArgumentNotValidException(
+    public ResponseEntity<ErrorResponse> handleMethodArgumentNotValidException(
             MethodArgumentNotValidException exception) {
         var errors = exception
                 .getBindingResult()
@@ -46,6 +46,6 @@ public class GlobalExceptionHandler {
 
         return ResponseEntity
                 .unprocessableEntity()
-                .body(new ErrorReponse(errorDetailsList));
+                .body(new ErrorResponse(errorDetailsList));
     }
 }

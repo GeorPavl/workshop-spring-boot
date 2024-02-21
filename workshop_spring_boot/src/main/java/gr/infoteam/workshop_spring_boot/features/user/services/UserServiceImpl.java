@@ -1,9 +1,11 @@
 package gr.infoteam.workshop_spring_boot.features.user.services;
 
+import gr.infoteam.workshop_spring_boot.features.user.User;
 import gr.infoteam.workshop_spring_boot.features.user.mappers.UserMapper;
 import gr.infoteam.workshop_spring_boot.features.user.dtos.UserRequestDto;
 import gr.infoteam.workshop_spring_boot.features.user.dtos.UserResponseDto;
 import gr.infoteam.workshop_spring_boot.features.user.repositories.UserRepository;
+import gr.infoteam.workshop_spring_boot.utils.exceptions.custom.impls.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -32,7 +34,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponseDto getById(UUID id) {
         var user = userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException(User.class.getSimpleName(), "id",
+                        id.toString()));
         return new UserResponseDto(user);
     }
 

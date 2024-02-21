@@ -1,5 +1,6 @@
 package gr.infoteam.workshop_spring_boot.features.user.dtos;
 
+import gr.infoteam.workshop_spring_boot.features.user.validators.StrongPasswordValidator;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
@@ -13,6 +14,7 @@ public record UserRequestDto(
         String lastName,
         @Email(message = "{validations.user.email}")
         String email,
+        @StrongPasswordValidator
         String password,
         String role,
         String phoneNumber,

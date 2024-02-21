@@ -1,4 +1,4 @@
-package gr.infoteam.workshop_spring_boot.utils.config.exceptions;
+package gr.infoteam.workshop_spring_boot.utils.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
-import java.util.List;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {

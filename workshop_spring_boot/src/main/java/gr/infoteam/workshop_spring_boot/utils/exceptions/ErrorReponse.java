@@ -1,4 +1,4 @@
-package gr.infoteam.workshop_spring_boot.utils.config.exceptions;
+package gr.infoteam.workshop_spring_boot.utils.exceptions;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

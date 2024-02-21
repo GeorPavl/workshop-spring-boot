@@ -1,10 +1,12 @@
 package gr.infoteam.workshop_spring_boot.features.user;
 
+import gr.infoteam.workshop_spring_boot.features.skill.Skill;
 import gr.infoteam.workshop_spring_boot.features.user_info.UserInfo;
 import gr.infoteam.workshop_spring_boot.features.user.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -41,4 +43,12 @@ public class User {
     @OneToOne( cascade = CascadeType.ALL)
     @JoinColumn(name = "user_info_id", referencedColumnName = "id", columnDefinition = "uuid")
     private UserInfo userInfo;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_skills",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "skill_id")}
+    )
+    private List<Skill> skills;
 }

@@ -1,8 +1,10 @@
 package gr.infoteam.workshop_spring_boot.features.skill;
 
+import gr.infoteam.workshop_spring_boot.features.user.User;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -21,4 +23,7 @@ public class Skill {
 
     @Column(name = "name")
     private String name;
+
+    @ManyToMany(mappedBy = "skills", fetch = FetchType.EAGER)
+    private List<User> users;
 }

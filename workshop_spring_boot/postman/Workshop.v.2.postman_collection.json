@@ -100,6 +100,80 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Helen\",\r\n    \"lastName\": \"Something\",\r\n    \"email\": \"helen@mail.com\",\r\n    \"password\": \"Password123!@#\",\r\n    \"role\": \"USER\",\r\n    \"phoneNumber\": \"6983214560\",\r\n    \"isAvailable\": true,\r\n    \"location\": \"THESSALONIKI\",\r\n    \"jobRole\": \"DEVELOPER\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/v1/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"phoneNumber\": \"123456789\",\r\n    \"isAvailable\": false,\r\n    \"location\": \"DORTMUND\",\r\n    \"jobRole\": \"DEVELOPER\",\r\n    \"role\": \"USER\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/v1/users/6df40447-12eb-48f5-9603-f9bb7c8ea2bd",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"users",
+						"6df40447-12eb-48f5-9603-f9bb7c8ea2bd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v1/users/cfadbad8-fcca-4696-bfe7-ffcfab8f8aa0",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"users",
+						"cfadbad8-fcca-4696-bfe7-ffcfab8f8aa0"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

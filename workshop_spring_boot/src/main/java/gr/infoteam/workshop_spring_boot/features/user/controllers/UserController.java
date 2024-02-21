@@ -55,4 +55,11 @@ public class UserController {
                 .accepted()
                 .body(userService.update(id, requestDto));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteUser(@PathVariable("id") UUID id) {
+        return ResponseEntity
+                .ok()
+                .body(userService.delete(id));
+    }
 }

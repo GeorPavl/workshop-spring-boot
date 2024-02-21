@@ -16,4 +16,5 @@ public interface UserService {
     UserResponseDto getByEmail(String email);
     UserResponseDto create(UserRequestDto requestDto) throws NoSuchAlgorithmException;
     UserResponseDto update(UUID id, UpdateUserRequestDto requestDto);
+    String delete(UUID id);
 }

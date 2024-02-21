@@ -67,4 +67,15 @@ public class UserServiceImpl implements UserService {
         var savedUser = userRepository.save(mappedUser);
         return new UserResponseDto(savedUser);
     }
+
+    @Override
+    public String delete(UUID id) {
+        try {
+            var entity = getEntityById(id);
+            userRepository.deleteById(id);
+            return String.format("User with id %s, was deleted successfully", id);
+        } catch (Exception e) {
+            return String.format("Something went wrong! %s", e.getMessage());
+        }
+    }
 }

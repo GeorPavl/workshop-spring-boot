@@ -16,41 +16,32 @@ public class AppInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        User userWithConstructor = new User(
-                "Mary",
-                "Doe",
-                "mary@mail.com",
-                "Password123!@#"
-        );
+        createUsers();
+    }
 
-        var userWithSetters = new User();
-        userWithSetters.setFirstName("Jim");
-        userWithSetters.setLastName("Public");
-        userWithSetters.setEmail("jim@mail.com");
-        userWithSetters.setPassword("Password123!@#");
+    private void createUsers() {
+        try {
+            var mary = User.builder()
+                    .firstName("Mary")
+                    .lastName("Public")
+                    .email("mary@mail.com")
+                    .password("Password123!@#")
+                    .build();
 
-        log.info("User with constructor: " + userWithConstructor);
-        log.info("User with setters: " + userWithSetters);
+            var jim = User.builder()
+                    .firstName("Jim")
+                    .lastName("Doe")
+                    .email("jim@mail.com")
+                    .password("Password123!@#")
+                    .build();
 
-        var savedUser = userRepository.save(userWithConstructor);
-        log.info("Saved user: " + savedUser);
+            userRepository.save(mary);
+            userRepository.save(jim);
 
-        var retrievedUserById = userRepository.findById(savedUser.getId());
-        if (retrievedUserById.isPresent()) {
-            log.info("Retrieve user by id: " + retrievedUserById);
-        } else {
-            log.info("User not found");
+            log.info("Users saved successfully");
+        } catch (Exception e) {
+            log.error("Something went wrong");
+            log.error(e.getMessage());
         }
-
-        var retrievedUserByEmail = userRepository.findByEmail(savedUser.getEmail());
-        if (retrievedUserByEmail.isPresent()) {
-            log.info("Retrieve user by email " + retrievedUserByEmail);
-        } else {
-            log.info("User not found");
-        }
-
-        userRepository.save(userWithSetters);
-
-        log.info(userRepository.findAll().toString());
     }
 }

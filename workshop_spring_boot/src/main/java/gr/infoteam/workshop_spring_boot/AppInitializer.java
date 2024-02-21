@@ -35,8 +35,16 @@ public class AppInitializer implements CommandLineRunner {
                     .password("Password123!@#")
                     .build();
 
+//            var secondMary = User.builder()
+//                            .firstName("Mary")
+//                            .lastName("Another")
+//                            .email("mary@mail.com")
+//                            .password("Password123!@#")
+//                            .build();
+
             userRepository.save(mary);
             userRepository.save(jim);
+//            userRepository.save(secondMary);
 
             log.info("Users saved successfully");
         } catch (Exception e) {

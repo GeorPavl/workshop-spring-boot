@@ -1,6 +1,7 @@
 package gr.infoteam.workshop_spring_boot;
 
 import gr.infoteam.workshop_spring_boot.repositories.UserRepository;
+import gr.infoteam.workshop_spring_boot.user.Role;
 import gr.infoteam.workshop_spring_boot.user.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +27,7 @@ public class AppInitializer implements CommandLineRunner {
                     .lastName("Public")
                     .email("mary@mail.com")
                     .password("Password123!@#")
+                    .role(Role.ADMIN)
                     .build();
 
             var jim = User.builder()
@@ -33,18 +35,20 @@ public class AppInitializer implements CommandLineRunner {
                     .lastName("Doe")
                     .email("jim@mail.com")
                     .password("Password123!@#")
+                    .role(Role.USER)
                     .build();
 
-//            var secondMary = User.builder()
-//                            .firstName("Mary")
-//                            .lastName("Another")
-//                            .email("mary@mail.com")
-//                            .password("Password123!@#")
-//                            .build();
+            var secondMary = User.builder()
+                            .firstName("Mary")
+                            .lastName("Another")
+                            .email("mary.another@mail.com")
+                            .password("Password123!@#")
+                            .role(Role.USER)
+                            .build();
 
             userRepository.save(mary);
             userRepository.save(jim);
-//            userRepository.save(secondMary);
+            userRepository.save(secondMary);
 
             log.info("Users saved successfully");
         } catch (Exception e) {

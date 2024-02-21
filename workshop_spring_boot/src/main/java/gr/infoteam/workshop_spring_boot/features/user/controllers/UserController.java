@@ -1,10 +1,7 @@
 package gr.infoteam.workshop_spring_boot.features.user.controllers;
 
-import gr.infoteam.workshop_spring_boot.features.user.dtos.ChangePasswordRequestDto;
-import gr.infoteam.workshop_spring_boot.features.user.dtos.UpdateUserRequestDto;
-import gr.infoteam.workshop_spring_boot.features.user.dtos.UserRequestDto;
+import gr.infoteam.workshop_spring_boot.features.user.dtos.*;
 import gr.infoteam.workshop_spring_boot.features.user.services.UserService;
-import gr.infoteam.workshop_spring_boot.features.user.dtos.UserResponseDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -43,10 +40,17 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserResponseDto> createUser(@RequestBody @Valid UserRequestDto requestDto) throws NoSuchAlgorithmException {
+    public ResponseEntity<UserResponseDto> createUser(@RequestBody @Valid UserRequestDto requestDto) {
         return ResponseEntity
                 .accepted()
                 .body(userService.create(requestDto));
+    }
+
+    @PostMapping("/add-skill")
+    public ResponseEntity<UserResponseDto> addSkillToUser(@RequestBody @Valid UserSkillRequestDto requestDto) {
+        return ResponseEntity
+                .accepted()
+                .body(userService.addSkillToUser(requestDto));
     }
 
     @PatchMapping("/{id}")

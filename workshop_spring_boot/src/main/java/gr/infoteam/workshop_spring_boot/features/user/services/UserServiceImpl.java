@@ -1,11 +1,10 @@
 package gr.infoteam.workshop_spring_boot.features.user.services;
 
+import gr.infoteam.workshop_spring_boot.features.skill.services.SkillService;
+import gr.infoteam.workshop_spring_boot.features.skill.services.SkillUtilService;
 import gr.infoteam.workshop_spring_boot.features.user.User;
-import gr.infoteam.workshop_spring_boot.features.user.dtos.ChangePasswordRequestDto;
-import gr.infoteam.workshop_spring_boot.features.user.dtos.UpdateUserRequestDto;
+import gr.infoteam.workshop_spring_boot.features.user.dtos.*;
 import gr.infoteam.workshop_spring_boot.features.user.mappers.UserMapper;
-import gr.infoteam.workshop_spring_boot.features.user.dtos.UserRequestDto;
-import gr.infoteam.workshop_spring_boot.features.user.dtos.UserResponseDto;
 import gr.infoteam.workshop_spring_boot.features.user.repositories.UserRepository;
 import gr.infoteam.workshop_spring_boot.utils.exceptions.custom.implementations.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +24,8 @@ public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
     private final PasswordUtilService passwordUtilService;
     private final UserUtilService userUtilService;
+    private final SkillService skillService;
+    private final SkillUtilService skillUtilService;
 
     @Override
     public List<UserResponseDto> getAll() {
@@ -58,12 +59,28 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponseDto create(UserRequestDto requestDto) throws NoSuchAlgorithmException {
+    public UserResponseDto create(UserRequestDto requestDto) {
         var entity = userMapper.mapDtoToEntity(requestDto);
         passwordUtilService.encryptPassword(entity);
         var savedEntity = userRepository.save(entity);
 
         return new UserResponseDto(savedEntity);
+    }
+
+    @Override
+    public UserResponseDto addSkillToUser(UserSkillRequestDto requestDto) {
+        // Check if user exists
+        var user = getEntityByEmail(requestDto.email());
+        // Check if skill exists
+        var skill = skillService.getEntityByName(requestDto.skill());
+        // Check id user has already this skill
+        skillUtilService.checkIfUserHasAlreadyThisSkill(user, skill);
+        // Add bidirectional
+        user.addSkill(skill);
+        // Save use skill
+        var savedUser = userRepository.save(user);
+        // Return user dto
+        return new UserResponseDto(savedUser);
     }
 
     @Override

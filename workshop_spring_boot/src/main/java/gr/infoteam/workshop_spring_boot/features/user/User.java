@@ -51,4 +51,9 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name = "skill_id")}
     )
     private List<Skill> skills;
+
+    public void addSkill(Skill skill) {
+        skills.add(skill);
+        skill.getUsers().add(this);
+    }
 }

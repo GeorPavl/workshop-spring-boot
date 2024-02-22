@@ -2,7 +2,9 @@ package gr.infoteam.workshop_spring_boot.features.user.dtos;
 
 import gr.infoteam.workshop_spring_boot.features.user.validators.StrongPasswordValidator;
 import jakarta.validation.constraints.Email;
+import lombok.Builder;
 
+@Builder
 public record ChangePasswordRequestDto(
         @Email
         String email,

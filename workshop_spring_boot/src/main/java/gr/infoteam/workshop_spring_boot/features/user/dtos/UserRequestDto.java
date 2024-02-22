@@ -4,7 +4,9 @@ import gr.infoteam.workshop_spring_boot.features.user.validators.StrongPasswordV
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
+import lombok.Builder;
 
+@Builder
 public record UserRequestDto(
         @NotEmpty(message = "{validations.user.firstName.notEmpty}")
         @Size(min = 2, max = 50, message = "{validations.user.firstName.size}")

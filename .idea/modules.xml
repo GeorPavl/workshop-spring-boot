@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/workshop-spring-boot.iml" filepath="$PROJECT_DIR$/.idea/workshop-spring-boot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/workshop_spring_boot/workshop_spring_boot.iml" filepath="$PROJECT_DIR$/workshop_spring_boot/workshop_spring_boot.iml" />
+    </modules>
+  </component>
+</project>

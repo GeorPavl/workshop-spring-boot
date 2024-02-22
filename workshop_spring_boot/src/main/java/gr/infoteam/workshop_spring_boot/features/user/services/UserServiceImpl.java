@@ -11,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.UUID;
 
@@ -96,7 +95,7 @@ public class UserServiceImpl implements UserService {
         var user = getEntityByEmail(changePasswordRequestDto.email());
         // check if current pass is valid
         // check if new password equals confirm
-        userUtilService.validCredentialsForChangePassword(changePasswordRequestDto);
+        userUtilService.validateCredentialsForChangePassword(changePasswordRequestDto);
         // set new password
         user.setPassword(changePasswordRequestDto.newPassword());
         // encrypt new password

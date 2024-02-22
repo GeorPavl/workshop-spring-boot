@@ -14,7 +14,7 @@ public class UserUtilService {
 
     private final UserRepository userRepository;
 
-    public void validCredentialsForChangePassword(ChangePasswordRequestDto requestDto) {
+    public void validateCredentialsForChangePassword(ChangePasswordRequestDto requestDto) {
         var existingUser = checkIfUserExistsAndReturnUser(requestDto.email());
         checkIfPasswordIsValid(requestDto.currentPassword(), existingUser);
         checkIfConfirmPasswordMatchesNew(requestDto);

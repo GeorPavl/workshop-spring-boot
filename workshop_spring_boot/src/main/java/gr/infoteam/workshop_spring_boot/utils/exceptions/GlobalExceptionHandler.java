@@ -9,17 +9,20 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
     @ExceptionHandler({Exception.class})
-    @ResponseStatus(HttpStatus.CONFLICT)
-    public ResponseEntity<ErrorResponse> handleAllExceptions (Exception exception) {
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ResponseEntity<ErrorResponse> handleOtherException(Exception exception) {
         var errorDetails = new ErrorDetails(
                 LocalDateTime.now(),
                 exception.getMessage(),
-                HttpStatus.CONFLICT);
+                HttpStatus.INTERNAL_SERVER_ERROR);
 
         return ResponseEntity
                 .internalServerError()

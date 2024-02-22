@@ -1,9 +1,6 @@
 package gr.infoteam.workshop_spring_boot.utils.exceptions;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
@@ -11,6 +8,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString
 public class ErrorResponse {
 
     private List<ErrorDetails> errors;

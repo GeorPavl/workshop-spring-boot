@@ -72,6 +72,13 @@
 			<version>1.19.3</version>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- REST tests -->
+		<dependency>
+			<artifactId>rest-assured</artifactId>
+			<groupId>io.rest-assured</groupId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>

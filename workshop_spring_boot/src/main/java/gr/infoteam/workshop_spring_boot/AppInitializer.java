@@ -25,10 +25,7 @@ public class AppInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         createUsers();
-        printSaveUsers();
-
         createSkills();
-        printSkills();
     }
 
     private void createUsers() {
@@ -79,7 +76,7 @@ public class AppInitializer implements CommandLineRunner {
             userRepository.save(jim);
             userRepository.save(secondMary);
 
-            log.info("Users saved successfully");
+            log.info("<-- Users saved successfully -->");
         } catch (Exception e) {
             log.error("Something went wrong");
             log.error(e.getMessage());
@@ -91,21 +88,29 @@ public class AppInitializer implements CommandLineRunner {
     }
 
     private void createSkills() {
-        var angular = SkillRequestDto.builder()
-                .name("Angular")
-                .build();
+        try {
+            var angular = SkillRequestDto.builder()
+                    .name("Angular")
+                    .build();
 
-        var java = SkillRequestDto.builder()
-                .name("Java")
-                .build();
+            var java = SkillRequestDto.builder()
+                    .name("Java")
+                    .build();
 
-        var jira = SkillRequestDto.builder()
-                .name("Jira")
-                .build();
+            var jira = SkillRequestDto.builder()
+                    .name("Jira")
+                    .build();
 
-        skillService.create(angular);
-        skillService.create(java);
-        skillService.create(jira);
+            skillService.create(angular);
+            skillService.create(java);
+            skillService.create(jira);
+
+            log.info("<-- Skills saved successfully -->");
+        } catch (Exception e) {
+            log.error("Something went wrong");
+            log.error(e.getMessage());
+        }
+
     }
 
     private void printSkills() {

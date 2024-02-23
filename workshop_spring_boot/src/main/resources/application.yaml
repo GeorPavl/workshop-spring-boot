@@ -3,10 +3,19 @@ spring:
   application:
     name: kex
   jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: 'false'
     open-in-view: false
   mvc:
     log-request-details: 'true'
+
+logging:
+  level:
+    org:
+      root: WARN
+      hibernate: ERROR
+      springframework:
+        web: DEBUG
+      nodeValue: DEBUG
+    guru:
+      springframework:
+        controllers: DEBUG
